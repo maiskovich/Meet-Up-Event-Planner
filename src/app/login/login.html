@@ -1,0 +1,29 @@
+<div class="container">
+  <div>
+    <acme-navbar ></acme-navbar>
+  </div>
+  <div class="jumbotron">
+    <h3>Please login</h3>
+    {{authData}}
+    <form name="loginForm" novalidate ng-submit="authenticate()">
+      <div class="form-horizontal">
+        <div class="form-group required" ng-class="{ 'has-error': loginForm.email.$touched && loginForm.email.$invalid }">
+          <label for="email" class="control-label">Email</label>
+          <input id="email" ng-model="email" name="email" class="form-control" type="text" placeholder="Email Address" required>
+          <span class="help-block" ng-show="loginForm.email.$error.required && loginForm.email.$touched">Email is required.</span>
+        </div>
+        <div class="form-group required" ng-class="{ 'has-error': loginForm.pass.$dirty && loginForm.pass.$invalid}">
+          <label for="pass" class="control-label">Password</label>
+          <input id="pass" ng-model="pass"  name="pass" class="form-control" type="password" placeholder="Password">
+          <span class="help-block" ng-show="loginForm.pass.$error.required && loginForm.pass.$touched">Password is required.</span>
+      <span class="complex-password">
+        </span>
+
+        </div>
+      </div>
+
+      <input type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="loginForm.$invalid || !loginForm.$dirty" value="Submit">
+    </form>
+  </div>
+
+</div>

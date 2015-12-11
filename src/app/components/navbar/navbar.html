@@ -1,0 +1,21 @@
+<nav class="navbar navbar-static-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a ng-href="#/">
+      <p class="navbar-brand" >
+        Events!
+      </p>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-login" >
+      <ul class="nav navbar-nav" ng-show="!authData">
+        <li class="active"><a ng-href="#/login/">Login</a></li>
+        <li><a ng-href="#/login/register">Register</a></li>
+      </ul>
+      <ul class="nav navbar-nav" ng-show="authData">
+        <li class="active"><a ng-href="#/event/">Create event</a></li>
+        <li><a ng-click="auth.$unauth()">Log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
