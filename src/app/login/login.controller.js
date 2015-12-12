@@ -5,7 +5,7 @@
     .controller('LoginController', LoginController);
 
   /** @ngInject */
-  function LoginController($scope , $firebaseObject, $firebaseArray,firebaseUrl,Auth,$state) {
+  function LoginController($scope, Auth, $state) {
     var vm = this;
 
 
@@ -18,6 +18,7 @@
         password: $scope.pass
       }).then(function (authData) {
         $scope.authData = authData;
+        $state.go('home');
       }).catch(function (error) {
         $scope.error = error;
         alert('Wrong email or password');

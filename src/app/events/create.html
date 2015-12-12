@@ -1,0 +1,68 @@
+<div class="container">
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+  <div class="jumbotron">
+    <h3>Please create your event</h3>
+
+    <form name="eventForm" novalidate ng-submit="add()">
+      <div class="form-horizontal">
+        <div class="form-group required"
+             ng-class="{ 'has-error': registerForm.username.$touched && registerForm.username.$invalid }">
+          <label for="eventname" class="control-label">Choose a name for your event</label>
+          <input id="eventname" ng-model="eventname" name="eventname" class="form-control" type="text"
+                 placeholder="Event name" autofocus required>
+          <span class="help-block" ng-show="eventForm.eventname.$error.required && eventForm.eventname.$touched">Event name is required.</span>
+
+        </div>
+        <div class="form-group required"
+             ng-class="{ 'has-error': eventForm.eventtype.$touched && eventForm.eventtype.$invalid }">
+          <label for="eventtype" class="control-label">Wich kind of event is it?</label>
+          <input id="eventtype" ng-model="eventtype" name="eventtype" class="form-control" list="eventsTypes"
+                 placeholder="Event type" required>
+          <datalist id="eventsTypes">
+            <option value="Birthday Party">
+            <option value="Conference Talk,">
+            <option value="Wedding">
+            <option value="Graduation Party">
+            <option value="Just for Fun">
+          </datalist>
+          <span class="help-block" ng-show="eventForm.eventtype.$error.required && eventForm.eventtype.$touched">Event type is required.</span>
+        </div>
+        <div class="form-group required" ng-class="{ 'has-error': eventForm.host.$dirty && eventForm.host.$invalid}">
+          <label for="host" class="control-label">Who is hosting the event?</label>
+          <input id="host" ng-model="host" name="host" class="form-control" type="text" placeholder="Event host">
+          <span class="help-block" ng-show="eventForm.host.$error.required && eventForm.host.$touched">Event host is required.</span>
+        </div>
+        <div class="form-group required" ng-class="{ 'has-error': eventForm.start.$dirty && eventForm.start.$invalid}">
+          <label for="start" class="control-label">When is the event starting?</label>
+          <input id="start" ng-model="start" name="start" class="form-control" type="datetime-local"
+                 placeholder="Start's date">
+          <span class="help-block" ng-show="eventForm.start.$error.required && eventForm.start.$touched">Event start's time is required.</span>
+        </div>
+      </div>
+      <h4>Optional:</h4>
+
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label for="birthday">Birthday </label>
+          <input id="birthday" ng-model="birthday" name="birthday" class="form-control" type="date"
+                 placeholder="Birthday">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="employer">Employer </label>
+          <input id="employer" ng-model="employer" name="employer" class="form-control" type="text"
+                 placeholder="Employer">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="jobtitle">Job Title </label>
+          <input id="jobtitle" ng-model="jobtitle" name="jobtitle" class="form-control" type="text"
+                 placeholder="Job Title">
+        </div>
+      </div>
+      <input type="submit" class="btn btn-primary btn-lg btn-block"
+             ng-disabled="registerForm.$invalid || !registerForm.$dirty" value="Submit">
+    </form>
+  </div>
+
+</div>

@@ -4,7 +4,6 @@
   </div>
   <div class="jumbotron">
     <h3>Please login</h3>
-    {{authData}}
     <form name="loginForm" novalidate ng-submit="authenticate()">
       <div class="form-horizontal">
         <div class="form-group required" ng-class="{ 'has-error': loginForm.email.$touched && loginForm.email.$invalid }">
