@@ -38,8 +38,38 @@
           <label for="start" class="control-label">When is the event starting?</label>
           <input id="start" ng-model="start" name="start" class="form-control" type="datetime-local"
                  placeholder="Start's date">
-          <span class="help-block" ng-show="eventForm.start.$error.required && eventForm.start.$touched">Event start's time is required.</span>
+          <span class="help-block" ng-show="eventForm.start.$error.required && eventForm.start.$touched">Event start date is required.</span>
         </div>
+        <div class="form-group required"
+             ng-class="{ 'has-error': eventForm.duration.$dirty && eventForm.duration.$invalid}">
+          <label for="duration" class="control-label">How long is the event?</label>
+          <timepicker id="duration" ng-model="duration" name="duration" hour-step="1" minute-step="15" min="15"
+                      show-meridian="false"></timepicker>
+          <span class="help-block" ng-show="eventForm.duration.$error.required && eventForm.duration.$touched">Event duration is required.</span>
+        </div>
+        <div class="form-group required"
+             ng-class="{ 'has-error': eventForm.finish.$dirty && eventForm.finish.$invalid}">
+          <label for="finish" class="control-label">When is the event finishing?</label>
+          <input id="finish" ng-model="finish" name="finish" class="form-control" type="datetime-local"
+                 placeholder="Finish date" readonly>
+          <span class="help-block" ng-show="eventForm.finish.$error.required && eventForm.finish.$touched">Event finish date is required.</span>
+        </div>
+        <div class="form-group required">
+          <label for="guest" class="control-label">Add guests</label>
+          <ul class="list-group">
+            <li ng-repeat="guest in guests" class="list-group-item list-group-item-info">
+              <span class="badge" ng-click="removeGuest(guest)" aria-label="Remove guest">-</span>
+              {{guest}}
+            </li>
+
+          </ul>
+          <div class="input-group">
+            <input id="guest" ng-model="guest" name="guest" class="form-control" type="text" placeholder="Guest">
+            <span ng-click="(guest === undefined || !(guest.length > 0)) ||addGuest()" ng-disabled=""
+                  class="input-group-addon" aria-label="Add guest">+</span>
+          </div>
+        </div>
+
       </div>
       <h4>Optional:</h4>
 
