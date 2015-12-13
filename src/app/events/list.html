@@ -1,0 +1,27 @@
+<div class="container">
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+  <div class="jumbotron text-center">
+    <h3>Events</h3>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="event in eventsArray">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{ event.eventname }}</h3>
+
+          <p>{{ event.location }}</p>
+
+          <p>Starts: {{ event.start | asDate | date:'short'}}</p>
+
+          <p>Duration: {{ event.duration}} Hs</p>
+
+          <p>Finish: {{ event.finish | asDate | date:'short'}}</p>
+
+          <p><a ng-href=""></a></p>
+        </div>
+      </div>
+    </div>
+  </div>

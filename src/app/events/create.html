@@ -8,7 +8,7 @@
     <form name="eventForm" novalidate ng-submit="add()">
       <div class="form-horizontal">
         <div class="form-group required"
-             ng-class="{ 'has-error': registerForm.eventname.$touched && registerForm.eventname.$invalid }">
+             ng-class="{ 'has-error': eventForm.eventname.$touched && eventForm.eventname.$invalid }">
           <label for="eventname" class="control-label">Choose a name for your event</label>
           <input id="eventname" ng-model="eventname" name="eventname" class="form-control" type="text"
                  placeholder="Event name" autofocus required>
@@ -29,26 +29,28 @@
           </datalist>
           <span class="help-block" ng-show="eventForm.eventtype.$error.required && eventForm.eventtype.$touched">Event type is required.</span>
         </div>
-        <div class="form-group required" ng-class="{ 'has-error': eventForm.host.$dirty && eventForm.host.$invalid}">
+        <div class="form-group required" ng-class="{ 'has-error': eventForm.host.$touched && eventForm.host.$invalid}">
           <label for="host" class="control-label">Who is hosting the event?</label>
-          <input id="host" ng-model="host" name="host" class="form-control" type="text" placeholder="Event host">
+          <input id="host" ng-model="host" name="host" class="form-control" type="text" placeholder="Event host"
+                 required>
           <span class="help-block" ng-show="eventForm.host.$error.required && eventForm.host.$touched">Event host is required.</span>
         </div>
-        <div class="form-group required" ng-class="{ 'has-error': eventForm.start.$dirty && eventForm.start.$invalid}">
+        <div class="form-group required"
+             ng-class="{ 'has-error': eventForm.start.$touched && eventForm.start.$invalid}">
           <label for="start" class="control-label">When is the event starting?</label>
           <input id="start" ng-model="start" name="start" class="form-control" type="datetime-local"
-                 placeholder="Start's date">
+                 placeholder="Start's date" required>
           <span class="help-block" ng-show="eventForm.start.$error.required && eventForm.start.$touched">Event start date is required.</span>
         </div>
         <div class="form-group required"
-             ng-class="{ 'has-error': eventForm.duration.$dirty && eventForm.duration.$invalid}">
+             ng-class="{ 'has-error': eventForm.duration.$touched && eventForm.duration.$invalid}">
           <label for="duration" class="control-label">How long is the event?</label>
           <timepicker id="duration" ng-model="duration" name="duration" hour-step="1" minute-step="15" min="15"
                       show-meridian="false"></timepicker>
           <span class="help-block" ng-show="eventForm.duration.$error.required && eventForm.duration.$touched">Event duration is required.</span>
         </div>
         <div class="form-group required"
-             ng-class="{ 'has-error': eventForm.finish.$dirty && eventForm.finish.$invalid}">
+             ng-class="{ 'has-error': eventForm.finish.$touched && eventForm.finish.$invalid}">
           <label for="finish" class="control-label">When is the event finishing?</label>
           <input id="finish" ng-model="finish" name="finish" class="form-control" type="datetime-local"
                  placeholder="Finish date" readonly>

@@ -21,17 +21,20 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment,Auth,$scope) {
+    function NavbarController(Auth, $state, $scope) {
       var vm = this;
       $scope.auth = Auth;
+      $scope.isCollapsed = true;
 
+      $scope.logOut = function () {
+        $state.go('home');
+      }
       // any time auth status updates, add the user data to scope
       $scope.auth.$onAuth(function(authData) {
         $scope.authData = authData;
       });
 
-      // "vm.creation" is avaible by directive option "bindToController: true"
-      vm.relativeDate = moment(vm.creationDate).fromNow();
+
     }
   }
 

@@ -5,7 +5,7 @@
     .controller('EventsController', EventsController);
 
   /** @ngInject */
-  function EventsController($scope, $firebaseArray, firebaseUrl, Auth, $state, locationApi) {
+  function EventsController($scope, $firebaseArray, firebaseUrl, Auth, $state, locationApi, $log) {
     var vm = this;
     var $ref = new Firebase(firebaseUrl);
     // create a synchronized array
@@ -15,6 +15,7 @@
     d.setMinutes(0);
     $scope.duration = d;
     $scope.$watchGroup(['start', 'duration'], function (newValue, oldValue) {
+      $log.log($scope.eventForm);
       var startDate = new Date($scope.start);
       startDate.setHours(startDate.getHours() + $scope.duration.getHours());
       startDate.setMinutes(startDate.getMinutes() + $scope.duration.getMinutes());
@@ -55,9 +56,9 @@
         eventname: $scope.eventname,
         eventtype: $scope.eventtype,
         host: $scope.host,
-        start: $scope.start,
-        duration: $scope.duration,
-        finish: $scope.finish,
+        start: $scope.start.toString(),
+        duration: $scope.duration.getHours() + ':' + (($scope.duration.getMinutes() < 10 ? '0' : '') + $scope.duration.getMinutes()),
+        finish: $scope.finish.toString(),
         guests: $scope.guests,
         location: $scope.location,
         description: optional($scope.description)
