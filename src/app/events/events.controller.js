@@ -5,10 +5,11 @@
     .controller('EventsController', EventsController);
 
   /** @ngInject */
-  function EventsController($scope, $firebaseObject, $firebaseArray, firebaseUrl, Auth, $state, $log) {
+  function EventsController($scope, $firebaseArray, firebaseUrl, Auth, $state, locationApi) {
     var vm = this;
     var $ref = new Firebase(firebaseUrl);
-
+    // create a synchronized array
+    $scope.eventsArray = $firebaseArray($ref);
     var d = new Date();
     d.setHours(0);
     d.setMinutes(0);
@@ -27,12 +28,54 @@
     $scope.addGuest = function () {
       $scope.guests.push($scope.guest);
       $scope.guest = '';
-      $log.log($scope.guests);
     };
     $scope.removeGuest = function (guest) {
       var index = $scope.guests.indexOf(guest);
       $scope.guests.splice(index, 1);
     }
+
+    navigator.geolocation.getCurrentPosition(function (position) {
+
+      var location = position;
+      locationApi.get({ll: location['coords']['latitude'] + ',' + location['coords']['longitude']}, function (placesResult) {
+        if (placesResult.response.groups) {
+          $scope.places = placesResult.response.groups[0].items;
+          $scope.totalRecordsCount = placesResult.response.totalResults;
+
+        }
+        else {
+          $scope.places = [];
+          $scope.totalRecordsCount = 0;
+        }
+      });
+    });
+
+    $scope.add = function () {
+      $scope.eventsArray.$add({
+        eventname: $scope.eventname,
+        eventtype: $scope.eventtype,
+        host: $scope.host,
+        start: $scope.start,
+        duration: $scope.duration,
+        finish: $scope.finish,
+        guests: $scope.guests,
+        location: $scope.location,
+        description: optional($scope.description)
+      }).then(function () {
+        $state.go('home');
+      });
+      ;
+
+      function optional(field) {
+        if (field) {
+          return field;
+        } else {
+          return null;
+        }
+      };
+
+
+    };
 
 
   }
