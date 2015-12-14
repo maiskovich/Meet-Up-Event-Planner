@@ -7,6 +7,7 @@
   /** @ngInject */
   function EventsController($scope, $firebaseArray, firebaseUrl, Auth, $state, locationApi, $log) {
     var vm = this;
+    $scope.page = 1;
     var $ref = new Firebase(firebaseUrl);
     // create a synchronized array
     $scope.eventsArray = $firebaseArray($ref);
