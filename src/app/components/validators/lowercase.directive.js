@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var lowercaseREG=/[a-z]/g;
+  var lowercaseREG = /[a-z]/;
   angular
     .module('1Meetup')
     .directive('lowerCase', lowerCase);

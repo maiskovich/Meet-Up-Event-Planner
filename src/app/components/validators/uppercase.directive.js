@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var uppercaseREG=/[A-Z]/g;
+  var uppercaseREG = /[A-Z]/;
   angular
     .module('1Meetup')
     .directive('upperCase', upperCase);

@@ -16,7 +16,6 @@
     d.setMinutes(0);
     $scope.duration = d;
     $scope.$watchGroup(['start', 'duration'], function (newValue, oldValue) {
-      $log.log($scope.eventForm);
       var startDate = new Date($scope.start);
       startDate.setHours(startDate.getHours() + $scope.duration.getHours());
       startDate.setMinutes(startDate.getMinutes() + $scope.duration.getMinutes());
@@ -35,7 +34,8 @@
       var index = $scope.guests.indexOf(guest);
       $scope.guests.splice(index, 1);
     }
-
+    //Initialize places before getting the response from Foursquare
+    $scope.places=[];
     navigator.geolocation.getCurrentPosition(function (position) {
 
       var location = position;
@@ -50,7 +50,10 @@
           $scope.totalRecordsCount = 0;
         }
       });
-    });
+    },
+      function (error) {
+        alert('Please share your location to get venues suggestions');
+      });
 
     $scope.add = function () {
       $scope.eventsArray.$add({
