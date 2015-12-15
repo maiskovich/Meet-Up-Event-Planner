@@ -7,7 +7,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="event in eventsArray">
+    <div class="col-sm-6 col-md-4" ng-repeat="(key, event)  in eventsArray" ng-href="#/events/view/{{key}}">
       <div class="thumbnail">
         <div class="caption">
           <h3>{{ event.eventname }}</h3>

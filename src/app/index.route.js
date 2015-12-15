@@ -26,6 +26,12 @@
         controller: 'LoginController',
         controllerAs: 'login'
       })
+      .state('eventsDetails', {
+        url: '/events/view/:key',
+        templateUrl: 'app/events/details.html',
+        controller: 'EventsDetailsController',
+        controllerAs: 'event'
+      })
       .state('events', {
         url: '/events/',
         templateUrl: 'app/events/create.html',
