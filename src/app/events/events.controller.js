@@ -11,6 +11,7 @@
     var $ref = new Firebase(firebaseUrl);
     // create a synchronized array
     $scope.eventsArray = $firebaseArray($ref);
+    $log.log($scope.eventsArray);
     var d = new Date();
     d.setHours(0);
     d.setMinutes(0);

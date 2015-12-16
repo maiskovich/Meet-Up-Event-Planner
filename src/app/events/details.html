@@ -1,0 +1,23 @@
+<div class="container">
+  <div>
+    <acme-navbar></acme-navbar>
+  </div>
+  <div class="jumbotron text-center" ng-repeat="event in data">
+    <h1>{{ event.eventname }}</h1>
+
+    <p>{{ event.location }}</p>
+
+    <p>Starts: {{ event.start | asDate | date:'short'}}</p>
+
+    <p>Duration: {{ event.duration}} Hs</p>
+
+    <p>Finish: {{ event.finish | asDate | date:'short'}}</p>
+
+    <p>Guests</p>
+    <ul class="list-group">
+      <li ng-repeat="guest in guests" class="list-group-item list-group-item-info">
+        <span class="badge" ng-click="removeGuest(guest)" aria-label="Remove guest">-</span>
+        {{guest}}
+      </li>
+    </ul>
+  </div>
