@@ -9,18 +9,18 @@
     var vm = this;
 
 
-    $scope.authenticate = function() {
-      $scope.authData = null;
-      $scope.error = null;
+    vm.authenticate = function () {
+      vm.authData = null;
+      vm.error = null;
 
       Auth.$authWithPassword({
-        email: $scope.email,
-        password: $scope.pass
+        email: vm.email,
+        password: vm.pass
       }).then(function (authData) {
-        $scope.authData = authData;
+        vm.authData = authData;
         $state.go('home');
       }).catch(function (error) {
-        $scope.error = error;
+        vm.error = error;
         alert('Wrong email or password');
       });
     }

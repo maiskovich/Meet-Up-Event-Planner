@@ -21,17 +21,17 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(Auth, $state, $scope) {
+    function NavbarController(Auth, $state) {
       var vm = this;
-      $scope.auth = Auth;
-      $scope.isCollapsed = true;
+      vm.auth = Auth;
+      vm.isCollapsed = true;
 
-      $scope.logOut = function () {
+      vm.logOut = function () {
         $state.go('home');
       }
       // any time auth status updates, add the user data to scope
-      $scope.auth.$onAuth(function(authData) {
-        $scope.authData = authData;
+      vm.auth.$onAuth(function (authData) {
+        vm.authData = authData;
       });
 
 

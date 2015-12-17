@@ -3,19 +3,19 @@
     <acme-navbar></acme-navbar>
   </div>
   <div class="jumbotron text-center">
-    <h1>{{ event.eventname }}</h1>
+    <h1>{{ vm.event.eventname }}</h1>
 
-    <p>{{ event.location }}</p>
+    <p>{{ vm.event.location }}</p>
 
-    <p>Starts: {{ event.start | asDate | date:'short'}}</p>
+    <p>Starts: {{ vm.event.start | asDate | date:'short'}}</p>
 
-    <p>Duration: {{ event.duration}} Hs</p>
+    <p>Duration: {{ vm.event.duration}} Hs</p>
 
-    <p>Finish: {{ event.finish | asDate | date:'short'}}</p>
+    <p>Finish: {{ vm.event.finish | asDate | date:'short'}}</p>
 
     <p>Guests</p>
     <ul class="list-group">
-      <li ng-repeat="guest in event.guests" class="list-group-item list-group-item-info">
+      <li ng-repeat="guest in vm.event.guests" class="list-group-item list-group-item-info">
         {{guest}}
       </li>
     </ul>

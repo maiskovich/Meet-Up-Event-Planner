@@ -11,14 +11,14 @@
       <a class="navbar-brand" href="#/">Events!</a>
         </a>
     </div>
-    <div class="collapse navbar-collapse" collapse="isCollapsed" id="navbar-login">
-      <ul class="nav navbar-nav" ng-show="!authData">
+    <div class="collapse navbar-collapse" collapse="vm.isCollapsed" id="navbar-login">
+      <ul class="nav navbar-nav" ng-show="!vm.authData">
         <li class="active"><a ng-href="#/login/">Login</a></li>
         <li><a ng-href="#/login/register">Register</a></li>
       </ul>
-      <ul class="nav navbar-nav" ng-show="authData">
+      <ul class="nav navbar-nav" ng-show="vm.authData">
         <li class="active"><a ng-href="#/events/">Create event</a></li>
-        <li><a ng-click="auth.$unauth();logOut()">Log out</a></li>
+        <li><a ng-click="vm.auth.$unauth();logOut()">Log out</a></li>
       </ul>
     </div>
   </div>

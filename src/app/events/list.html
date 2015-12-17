@@ -7,7 +7,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="event in eventsArray">
+    <div class="col-sm-6 col-md-4" ng-repeat="event in vm.eventsArray">
       <a ng-href="#/events/view/{{event.$id}}">
       <div class="thumbnail">
         <div class="caption">
@@ -21,7 +21,6 @@
 
           <p>Finish: {{ event.finish | asDate | date:'short'}}</p>
 
-          <p><a ng-href=""></a></p>
         </div>
       </div>
       </a>

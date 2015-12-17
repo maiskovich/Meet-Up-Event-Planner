@@ -9,7 +9,7 @@
   function lowerCase() {
   var directive = {
     require: 'ngModel',
-    link: linkFunc,
+    link: linkFunc
   };
 
   return directive;
@@ -29,7 +29,7 @@
         return false;
       };
 
-  };
-};
+  }
+  }
 
 })();

@@ -9,27 +9,27 @@
     var vm = this;
     var $ref = new Firebase(firebaseUrl);
     // create a synchronized array
-    $scope.messages = $firebaseArray($ref);
+    vm.messages = $firebaseArray($ref);
     // download the data into a local object
     vm.data = $firebaseObject($ref);
-    $scope.message = null;
-    $scope.error = null;
+    vm.message = null;
+    vm.error = null;
 
 
-    $scope.add = function() {
+    vm.add = function () {
 
       Auth.$createUser({
-        username: $scope.username,
-        email: $scope.email,
-        password:$scope.pass,
-        birthday:optional($scope.birthday),
-        employer:optional($scope.employer),
-        jobtitle:optional($scope.jobtitle)
+        username: vm.username,
+        email: vm.email,
+        password: vm.pass,
+        birthday: optional(vm.birthday),
+        employer: optional(vm.employer),
+        jobtitle: optional(vm.jobtitle)
       }).then(function(userData) {
-        $scope.message = "User created with uid: " + userData.uid;
+        vm.message = "User created with uid: " + userData.uid;
         $state.go('home');
       }).catch(function(error) {
-        $scope.error = error;
+        vm.error = error;
         alert(error);
       });
       function optional(field) {
@@ -40,12 +40,12 @@
         }
       };
 
-      $scope.username = '';
-      $scope.email = '';
-      $scope.pass='';
-      $scope.birthday='';
-      $scope.employer='';
-      $scope.jobtitle='';
+      vm.username = '';
+      vm.email = '';
+      vm.pass = '';
+      vm.birthday = '';
+      vm.employer = '';
+      vm.jobtitle = '';
 
     };
 

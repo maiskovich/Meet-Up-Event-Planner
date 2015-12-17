@@ -5,50 +5,49 @@
     .controller('EventsController', EventsController);
 
   /** @ngInject */
-  function EventsController($scope, $firebaseArray, firebaseUrl, Auth, $state, locationApi, $log) {
+  function EventsController($scope, $firebaseArray, firebaseUrl, Auth, $state, locationApi) {
     var vm = this;
-    $scope.page = 1;
+    vm.page = 1;
     var $ref = new Firebase(firebaseUrl);
     // create a synchronized array
-    $scope.eventsArray = $firebaseArray($ref);
-    $log.log($scope.eventsArray);
+    vm.eventsArray = $firebaseArray($ref);
     var d = new Date();
     d.setHours(0);
     d.setMinutes(0);
-    $scope.duration = d;
-    $scope.$watchGroup(['start', 'duration'], function (newValue, oldValue) {
-      var startDate = new Date($scope.start);
-      startDate.setHours(startDate.getHours() + $scope.duration.getHours());
-      startDate.setMinutes(startDate.getMinutes() + $scope.duration.getMinutes());
+    vm.duration = d;
+    $scope.$watchGroup(['vm.start', 'vm.duration'], function (newValue, oldValue) {
+      var startDate = new Date(vm.start);
+      startDate.setHours(startDate.getHours() + vm.duration.getHours());
+      startDate.setMinutes(startDate.getMinutes() + vm.duration.getMinutes());
 
-      $scope.finish = startDate;
+      vm.finish = startDate;
     });
 
     // Item List Arrays
-    $scope.guests = [];
+    vm.guests = [];
 
-    $scope.addGuest = function () {
-      $scope.guests.push($scope.guest);
-      $scope.guest = '';
+    vm.addGuest = function () {
+      vm.guests.push(vm.guest);
+      vm.guest = '';
     };
-    $scope.removeGuest = function (guest) {
-      var index = $scope.guests.indexOf(guest);
-      $scope.guests.splice(index, 1);
+    vm.removeGuest = function (guest) {
+      var index = vm.guests.indexOf(guest);
+      vm.guests.splice(index, 1);
     }
     //Initialize places before getting the response from Foursquare
-    $scope.places=[];
+    vm.places = [];
     navigator.geolocation.getCurrentPosition(function (position) {
 
       var location = position;
       locationApi.get({ll: location['coords']['latitude'] + ',' + location['coords']['longitude']}, function (placesResult) {
         if (placesResult.response.groups) {
-          $scope.places = placesResult.response.groups[0].items;
-          $scope.totalRecordsCount = placesResult.response.totalResults;
+          vm.places = placesResult.response.groups[0].items;
+          vm.totalRecordsCount = placesResult.response.totalResults;
 
         }
         else {
-          $scope.places = [];
-          $scope.totalRecordsCount = 0;
+          vm.places = [];
+          vm.totalRecordsCount = 0;
         }
       });
     },
@@ -56,21 +55,21 @@
         alert('Please share your location to get venues suggestions');
       });
 
-    $scope.add = function () {
-      $scope.eventsArray.$add({
-        eventname: $scope.eventname,
-        eventtype: $scope.eventtype,
-        host: $scope.host,
-        start: $scope.start.toString(),
-        duration: $scope.duration.getHours() + ':' + (($scope.duration.getMinutes() < 10 ? '0' : '') + $scope.duration.getMinutes()),
-        finish: $scope.finish.toString(),
-        guests: $scope.guests,
-        location: $scope.location,
-        description: optional($scope.description)
+    vm.add = function () {
+      vm.eventsArray.$add({
+        eventname: vm.eventname,
+        eventtype: vm.eventtype,
+        host: vm.host,
+        start: vm.start.toString(),
+        duration: vm.duration.getHours() + ':' + ((vm.duration.getMinutes() < 10 ? '0' : '') + vm.duration.getMinutes()),
+        finish: vm.finish.toString(),
+        guests: vm.guests,
+        location: vm.location,
+        description: optional(vm.description)
       }).then(function () {
         $state.go('home');
       });
-      ;
+
 
       function optional(field) {
         if (field) {
@@ -78,7 +77,7 @@
         } else {
           return null;
         }
-      };
+      }
 
 
     };

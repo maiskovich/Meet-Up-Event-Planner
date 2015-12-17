@@ -12,31 +12,31 @@
         url: '/',
         templateUrl: 'app/events/list.html',
         controller: 'EventsController',
-        controllerAs: 'main'
+        controllerAs: 'vm'
       })
       .state('register', {
         url: '/login/register',
         templateUrl: 'app/login/register.html',
         controller: 'RegisterController',
-        controllerAs: 'register'
+        controllerAs: 'vm'
       })
       .state('login', {
         url: '/login/',
         templateUrl: 'app/login/login.html',
         controller: 'LoginController',
-        controllerAs: 'login'
+        controllerAs: 'vm'
       })
       .state('eventsDetails', {
         url: '/events/view/:key',
         templateUrl: 'app/events/details.html',
         controller: 'EventsDetailsController',
-        controllerAs: 'event'
+        controllerAs: 'vm'
       })
       .state('events', {
         url: '/events/',
         templateUrl: 'app/events/create.html',
         controller: 'EventsController',
-        controllerAs: 'events',
+        controllerAs: 'vm',
         resolve: {
           // controller will not be loaded until $requireAuth resolves
           // Auth refers to our $firebaseAuth wrapper in the example above

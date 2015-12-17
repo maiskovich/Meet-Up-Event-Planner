@@ -21,7 +21,7 @@
         // it is invalid
         return false;
       };
-    };
-  };
+    }
+  }
 
 })();
