@@ -10,14 +10,11 @@
     var $ref = new Firebase(firebaseUrl);
     var key = $stateParams.key;
     // create a synchronized array
-    $scope.data = $firebaseObject($ref);
-    $ref.on("value", function (snapshot) {
-      console.log(snapshot.val().key);
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
+    var data = $firebaseObject($ref);
+    data.$loaded().then(function (data) {
+      $scope.event = data[key];
+      $log.log($scope.event);
     });
-    $log.log($scope.data);
-
 
 
 
