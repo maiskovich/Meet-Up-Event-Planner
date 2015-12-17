@@ -17,7 +17,7 @@
              ng-class="{ 'has-error': eventForm.eventname.$touched && eventForm.eventname.$invalid }">
           <label for="eventname" class="control-label">Choose a name for your event</label>
           <input id="eventname" ng-model="vm.eventname" name="eventname" class="form-control" type="text"
-                 placeholder="Event name" autofocus required>
+                 placeholder="Event name" required autofocus>
           <span class="help-block" ng-show="eventForm.eventname.$error.required && eventForm.eventname.$touched">Event name is required.</span>
 
         </div>

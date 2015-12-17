@@ -10,7 +10,7 @@
         <div class="form-group required" ng-class="{ 'has-error': loginForm.email.$touched && loginForm.email.$invalid }">
           <label for="email" class="control-label">Email</label>
           <input id="email" ng-model="vm.email" name="email" class="form-control" type="text"
-                 placeholder="Email Address" required>
+                 placeholder="Email Address" required autofocus>
           <span class="help-block" ng-show="loginForm.email.$error.required && loginForm.email.$touched">Email is required.</span>
         </div>
         <div class="form-group required" ng-class="{ 'has-error': loginForm.pass.$dirty && loginForm.pass.$invalid}">

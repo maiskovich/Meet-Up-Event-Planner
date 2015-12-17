@@ -10,7 +10,7 @@
     <div class="form-group required" ng-class="{ 'has-error': registerForm.username.$touched && registerForm.username.$invalid }">
     <label for="username" class="control-label">Username</label>
       <input id="username" ng-model="vm.username" name="username" class="form-control" type="text"
-             placeholder="User name" autofocus required>
+             placeholder="User name" required autofocus>
       <span class="help-block" ng-show="registerForm.username.$error.required && registerForm.username.$touched">Username is required.</span>
 
     </div>
