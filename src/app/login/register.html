@@ -5,7 +5,7 @@
   <div class="jumbotron">
     <h3>Please register your user</h3>
 
-    <form name="registerForm" novalidate ng-submit="vm.add()">
+    <form name="registerForm" novalidate ng-submit="vm.add()" autocomplete="on">
       <div class="form-horizontal">
     <div class="form-group required" ng-class="{ 'has-error': registerForm.username.$touched && registerForm.username.$invalid }">
     <label for="username" class="control-label">Username</label>

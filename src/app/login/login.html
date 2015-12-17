@@ -5,7 +5,7 @@
   <div class="jumbotron">
     <h3>Please login</h3>
 
-    <form name="loginForm" novalidate ng-submit="vm.authenticate()">
+    <form name="loginForm" novalidate ng-submit="vm.authenticate()" autocomplete="on">
       <div class="form-horizontal">
         <div class="form-group required" ng-class="{ 'has-error': loginForm.email.$touched && loginForm.email.$invalid }">
           <label for="email" class="control-label">Email</label>

@@ -11,7 +11,7 @@
     </div>
     <h3>Please create your event</h3>
 
-    <form name="eventForm" novalidate ng-submit="vm.add()">
+    <form name="eventForm" novalidate ng-submit="vm.add()" autocomplete="on">
       <div class="form-horizontal">
         <div class="form-group required" ng-show="vm.page===1"
              ng-class="{ 'has-error': eventForm.eventname.$touched && eventForm.eventname.$invalid }">
