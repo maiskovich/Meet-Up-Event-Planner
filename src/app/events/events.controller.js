@@ -52,7 +52,7 @@
       });
     },
       function (error) {
-        alert('Please share your location to get venues suggestions');
+        alert('Please share your location to get venue suggestions');
       });
 
     vm.add = function () {
