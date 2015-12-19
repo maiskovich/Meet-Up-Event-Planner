@@ -10,11 +10,10 @@ describe('directive matchinputs', function () {
     var element = angular.element(
       '<form name="form">' +
       '<input ng-model="model.pass" name="pass"  />' +
-      '<input ng-model="model.pass2" name="pass2" match-inputs="outerScopeInfo" />' +
+      '<input ng-model="model.pass2" name="pass2" match-inputs="model.pass" />' +
       '</form>'
     );
-    $scope.input = 'pass';
-    $scope.model = {pass: null, pass2: null}
+
     $compile(element)($scope);
     form = $scope.form;
     $scope.$digest();
@@ -24,6 +23,7 @@ describe('directive matchinputs', function () {
     it('should pass with same input', function () {
       form.pass.$setViewValue('asd');
       form.pass2.$setViewValue('asd');
+      console.log($scope.model);
       $scope.$digest();
       expect($scope.model.pass2).toEqual('asd');
       expect(form.pass2.$valid).toBe(true);
@@ -32,7 +32,6 @@ describe('directive matchinputs', function () {
       form.pass.$setViewValue('asd');
       form.pass2.$setViewValue('asdd');
       $scope.$digest();
-      expect($scope.model.pass2).toEqual('asdd');
       expect(form.pass2.$valid).toBe(false);
     });
   });
