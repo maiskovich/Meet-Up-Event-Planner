@@ -23,7 +23,6 @@ describe('directive matchinputs', function () {
     it('should pass with same input', function () {
       form.pass.$setViewValue('asd');
       form.pass2.$setViewValue('asd');
-      console.log($scope.model);
       $scope.$digest();
       expect($scope.model.pass2).toEqual('asd');
       expect(form.pass2.$valid).toBe(true);

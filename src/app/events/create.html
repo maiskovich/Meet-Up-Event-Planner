@@ -67,7 +67,7 @@
           <label for="guest" class="control-label">Add guests</label>
           <ul class="list-group">
             <li ng-repeat="guest in vm.guests" class="list-group-item list-group-item-info">
-              <span class="badge" ng-click="removeGuest(guest)" aria-label="Remove guest">-</span>
+              <span class="badge" ng-click="vm.removeGuest(guest)" aria-label="Remove guest">-</span>
               {{guest}}
             </li>
 
@@ -90,7 +90,7 @@
         </div>
         <h4 ng-show="vm.page===3">Optional:</h4>
 
-        <div class="form-group" ng-show="page===3">
+        <div class="form-group" ng-show="vm.page===3">
           <label for="description" class="control-label">Additional description for your guests</label>
           <textarea id="description" ng-model="vm.description" name="description" class="form-control"
                     placeholder="Description"></textarea>
