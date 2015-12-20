@@ -2,7 +2,7 @@
   <div>
     <acme-navbar></acme-navbar>
   </div>
-  <div class="jumbotron text-center">
+  <div class="jumbotron text-left">
     <h1>{{ vm.event.eventname }}</h1>
 
     <p>{{ vm.event.location }}</p>
@@ -14,8 +14,8 @@
     <p>Finish: {{ vm.event.finish | asDate | date:'short'}}</p>
 
     <p>Guests</p>
-    <ul class="list-group">
-      <li ng-repeat="guest in vm.event.guests" class="list-group-item list-group-item-info">
+    <ul>
+      <li ng-repeat="guest in vm.event.guests">
         {{guest}}
       </li>
     </ul>

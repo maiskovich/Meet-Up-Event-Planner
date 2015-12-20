@@ -77,7 +77,10 @@ gulp.task('fonts', function () {
     .pipe($.flatten())
     .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
 });
-
+/**
+ * Copy all the other files which are not processed by any mechanism in the dist folder
+ * with the same path
+ */
 gulp.task('other', function () {
   var fileFilter = $.filter(function (file) {
     return file.stat.isFile();
