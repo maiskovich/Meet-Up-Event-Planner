@@ -21,7 +21,7 @@
       <span class="help-block" ng-show="registerForm.email.$error.required && registerForm.email.$touched">Email is required.</span>
       </div>
         <div class="form-group required"
-             ng-class="{ 'has-error': registerForm.pass.$touched && registerForm.pass.$invalid , 'has-success': registerForm.pass.$dirty && registerForm.pass.$valid}">
+             ng-class="{ 'has-error': (registerForm.pass.$touched || registerForm.pass.$dirty) && registerForm.pass.$invalid , 'has-success': registerForm.pass.$dirty && registerForm.pass.$valid}">
     <label for="pass" class="control-label">Password</label>
       <input id="pass" ng-model="vm.pass" name="pass" class="form-control" type="password" ng-minlength="16"
              placeholder="Password" lower-case upper-case required>

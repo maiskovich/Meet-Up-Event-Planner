@@ -26,8 +26,13 @@
         employer: optional(vm.employer),
         jobtitle: optional(vm.jobtitle)
       }).then(function(userData) {
-        vm.message = "User created with uid: " + userData.uid;
-        $state.go('home');
+        Auth.$authWithPassword({
+          email: vm.email,
+          password: vm.pass
+        }).then(function (authData) {
+          vm.authData = authData;
+          $state.go('home');
+        })
       }).catch(function(error) {
         vm.error = error;
         alert(error);
@@ -39,13 +44,6 @@
           return null;
         }
       };
-
-      vm.username = '';
-      vm.email = '';
-      vm.pass = '';
-      vm.birthday = '';
-      vm.employer = '';
-      vm.jobtitle = '';
 
     };
 
