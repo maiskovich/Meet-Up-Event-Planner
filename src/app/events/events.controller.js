@@ -38,19 +38,19 @@
     vm.places = [];
     navigator.geolocation.getCurrentPosition(function (position) {
 
-      var location = position;
-      locationApi.get({ll: location['coords']['latitude'] + ',' + location['coords']['longitude']}, function (placesResult) {
-        if (placesResult.response.groups) {
-          vm.places = placesResult.response.groups[0].items;
-          vm.totalRecordsCount = placesResult.response.totalResults;
+        var location = position;
+        locationApi.get({ll: location['coords']['latitude'] + ',' + location['coords']['longitude']}, function (placesResult) {
+          if (placesResult.response.groups) {
+            vm.places = placesResult.response.groups[0].items;
+            vm.totalRecordsCount = placesResult.response.totalResults;
 
-        }
-        else {
-          vm.places = [];
-          vm.totalRecordsCount = 0;
-        }
-      });
-    },
+          }
+          else {
+            vm.places = [];
+            vm.totalRecordsCount = 0;
+          }
+        });
+      },
       function (error) {
         alert('Please share your location to get venue suggestions');
       });

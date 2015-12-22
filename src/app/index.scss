@@ -26,13 +26,15 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
     width: 50px;
   }
 }
-.complex-password{
+
+.complex-password {
   font-weight: normal;
   font-size: 12px;
 }
+
 .form-group.required .control-label:after {
-  content:"*";
-  color:red;
+  content: "*";
+  color: red;
 }
 
 /**

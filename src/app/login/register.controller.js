@@ -1,11 +1,11 @@
-(function() {
+(function () {
   'use strict';
   angular
     .module('1Meetup')
     .controller('RegisterController', RegisterController);
 
   /** @ngInject */
-  function RegisterController($scope , $firebaseObject, $firebaseArray,firebaseUrl,Auth,$state) {
+  function RegisterController($scope, $firebaseObject, $firebaseArray, firebaseUrl, Auth, $state) {
     var vm = this;
     var $ref = new Firebase(firebaseUrl);
     // create a synchronized array
@@ -25,7 +25,7 @@
         birthday: optional(vm.birthday),
         employer: optional(vm.employer),
         jobtitle: optional(vm.jobtitle)
-      }).then(function(userData) {
+      }).then(function (userData) {
         Auth.$authWithPassword({
           email: vm.email,
           password: vm.pass
@@ -33,7 +33,7 @@
           vm.authData = authData;
           $state.go('home');
         })
-      }).catch(function(error) {
+      }).catch(function (error) {
         vm.error = error;
         alert(error);
       });

@@ -13,10 +13,12 @@ Meet up event planner is a web app for creating events with features as:
 Its build with angularJS and based in the [Yeoman gulp-AngularJS generator](https://github.com/Swiip/generator-gulp-angular).
  
 ## Install
- 
-Install required tools `gulp` and `bower`:
- 
-`npm install -g gulp bower`
+
+After cloning the repository you should run:
+
+`npm install`
+
+`bower install`
  
  
 ##### Being inside of the directory of the project you can run:

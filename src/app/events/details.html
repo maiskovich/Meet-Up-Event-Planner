@@ -13,10 +13,12 @@
 
     <p>Finish: {{ vm.event.finish | asDate | date:'short'}}</p>
 
-    <p>Guests</p>
+    <p>Guests:</p>
     <ul>
       <li ng-repeat="guest in vm.event.guests">
         {{guest}}
       </li>
     </ul>
+    <p>Details:</p>
+    {{ vm.event.description}}
   </div>

@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
   var uppercaseREG = /[A-Z]/;
   angular
@@ -14,7 +14,7 @@
 
     return directive;
     function linkFunc(scope, elm, attrs, ctrl) {
-      ctrl.$validators.upperCase = function(modelValue, viewValue) {
+      ctrl.$validators.upperCase = function (modelValue, viewValue) {
         if (ctrl.$isEmpty(modelValue)) {
           // consider empty models to be valid
           return true;
